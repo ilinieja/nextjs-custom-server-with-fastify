@@ -4,6 +4,10 @@ import { POKEMONS, STATS } from './mocks';
 export default (opts?: FastifyServerOptions) => {
   const fastify = Fastify(opts);
 
+  fastify.get('/_health', async (request, reply) => {
+    return { status: 'OK' };
+  });
+
   fastify.get('/api/pokemons', async (request, reply) => {
     return POKEMONS;
   });
