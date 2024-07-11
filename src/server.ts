@@ -1,36 +1,20 @@
-import envSchema from 'env-schema';
-import fastify from './app';
+import fastify from './fastify-app';
 import logger from './logger';
+import env from './env';
+import nextjsApp from './nextjs-app';
 
-const app = fastify({
+const fastifyApp = fastify({
   logger,
   pluginTimeout: 50000,
   bodyLimit: 15485760,
 });
 
-if (import.meta.env.PROD) {
-  try {
-    // Get port from .env or 3000
-    const { PORT } = envSchema({
-      dotenv: true,
-      schema: {
-        type: 'object',
-        required: ['PORT'],
-        properties: {
-          PORT: {
-            type: 'string',
-            default: 3000,
-          },
-        },
-      },
-    });
-
-    app.listen({ port: PORT as number, host: '0.0.0.0' });
-    console.log(`Server started on 0.0.0.0:${PORT}`);
-  } catch (err) {
-    app.log.error(err);
-    process.exit(1);
-  }
+try {
+  nextjsApp.prepare().then(() => {
+    fastifyApp.listen({ port: env.PORT as number, host: env.HOST });
+    fastifyApp.log.info(`Server started on ${env.HOST}:${env.PORT}`);
+  });
+} catch (err) {
+  fastifyApp.log.error(err);
+  process.exit(1);
 }
-
-export const viteNodeApp = app;

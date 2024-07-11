@@ -1,15 +1,15 @@
-import { beforeAll, afterAll } from 'vitest'
-import buildFastify from '../app'
+import { beforeAll, afterAll } from 'vitest';
+import buildFastify from '../fastify-app';
 
-const fastify = buildFastify()
+const fastify = buildFastify();
 
 beforeAll(async () => {
   // called once before all tests run
-  await fastify.ready()
-})
+  await fastify.ready();
+});
 afterAll(async () => {
   // called once after all tests run
-  await fastify.close()
-})
+  await fastify.close();
+});
 
-export default fastify
+export default fastify;
