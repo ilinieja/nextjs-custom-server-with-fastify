@@ -10,10 +10,10 @@ Setup for Next.js custom server using Fastify.
 pnpm install
 ```
 
-**Start dev mode using Vite:**
+**Build and start:**
 
 ```bash
-pnpm dev
+pnpm start
 ```
 
 **Start test mode using Vitest:**
@@ -28,14 +28,8 @@ pnpm test
 pnpm coverage
 ```
 
-**Compile typescript to javascript:**
+**Build:**
 
 ```bash
 pnpm build
-```
-
-**Start for production:**
-
-```bash
-pnpm start
 ```
