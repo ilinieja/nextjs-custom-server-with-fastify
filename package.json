@@ -8,8 +8,8 @@
     "build": "concurrently \"npm:build:fastify\" \"npm:build:nextjs\"",
     "build:fastify": "vite build --outDir build --ssr src/server.ts",
     "build:nextjs": "cd ./src/nextjs-app && npm run build",
-    "format": "prettier --config .prettierrc \"src/**/*.{js,json,ts,css,scss,vue,html,md}\" --write",
     "start": "pnpm run build && node build/server.mjs",
+    "format": "prettier --config .prettierrc \"src/**/*.{js,json,ts,css,scss,vue,html,md}\" --write",
     "test": "vitest run",
     "test:ui": "vitest --ui",
     "coverage": "vitest --coverage"

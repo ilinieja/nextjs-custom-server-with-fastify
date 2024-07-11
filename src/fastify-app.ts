@@ -23,7 +23,7 @@ export default (opts?: FastifyServerOptions) => {
   // Path Next.js app is served at.
   const NEXTJS_APP_ROOT = '/nextjs-app';
   fastify.all(`${NEXTJS_APP_ROOT}*`, (request, reply) => {
-    // Remove prefix to make URL relative to let Next.js handle request
+    // Remove prefix to let Next.js handle request
     // like it was made directly to it.
     const nextjsAppUrl = parse(
       request.url.replace(NEXTJS_APP_ROOT, '') || '/',
