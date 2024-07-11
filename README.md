@@ -1,6 +1,7 @@
 # Next.js custom server with Fastify
 
 Setup for Next.js custom server using Fastify.
+Details and explanations available in the [blog post](https://blog.ilinieja.xyz/blog/custom-nextjs-server-with-fastify).
 
 ## Get started
 
